@@ -1,0 +1,19 @@
+//reversing the digits in a number in swift using functions
+var array = [String]()
+var num = 123456789
+var reversedNo = String()
+
+func reverseTheDigits(num:inout Int) {
+  while num > 0 {
+   let rem = num%10
+   num = num/10
+   array.append(String(rem))
+  } 
+}
+reverseTheDigits(num:&num)
+
+for i in array {
+    reversedNo += i
+}
+
+print(reversedNo)
