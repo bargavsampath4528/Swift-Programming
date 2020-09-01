@@ -1,0 +1,27 @@
+//settifying an array: removing duplicate elements
+
+var array = [1,1,2,2,3,3,1,3,4,5,5,5,1,6,1]
+var duplicateArray = [Int]()
+//var count = 0
+//[1,2,3,4,5]
+
+for i in 0...array.count-1 {
+    if i == 0 {
+        duplicateArray.append(array[i])
+    }
+    else {
+        //   if (!duplicateArray.contains(array[i])) {
+        //       duplicateArray.append(array[i])  
+              var count = 0
+              for j in 0...duplicateArray.count-1 {
+                  if array[i] == duplicateArray[j] {
+                      count += 1
+                   }
+                  }
+                  if count == 0 {
+                      duplicateArray.append(array[i])
+                  }
+              //} 
+         }
+}
+print(duplicateArray)
