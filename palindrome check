@@ -1,0 +1,49 @@
+//closest palindrome
+
+var number = 27
+var refNo = number
+
+//reversing the digits in a number in swift using functions
+var array = [String]()
+var reversedNo = String()
+var i = 1
+var preceeding = false
+
+func reverseTheDigits(num: Int)->String {
+   var num = num
+   array.removeAll()
+   reversedNo = ""
+  while num > 0 {
+   let rem = num%10
+   num = num/10
+   array.append(String(rem))
+  } 
+  for i in array {
+    reversedNo += i
+  }
+  return reversedNo
+}
+ 
+func palindromeCheck(number:Int) { 
+ while(i<number) {
+    let x = reverseTheDigits(num:refNo)
+    let y = Int(x)
+    if let z = y {
+        if z == refNo {
+            print("The nearest palindrome number for :\(number) is :\(refNo)")
+            i = number
+        }
+        if z != refNo && !preceeding {
+             refNo = number - i
+             preceeding = true
+        }
+         else {
+             refNo = number + i
+             i += 1
+             preceeding = false
+        } 
+     }
+  }
+}  
+
+palindromeCheck(number:number)
