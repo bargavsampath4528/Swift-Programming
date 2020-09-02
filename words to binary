@@ -1,0 +1,20 @@
+//word to binary code
+
+var binaryFormat = String()
+var word = "excLAIM"
+
+func wordsToBinary(ch:String) {
+   print(ch)
+   switch(ch) {
+     case "a","b","c","d","e","f","g","h","i","j","k","l","m","A","B","C","D","E","F","G","H","I","J","K","L","M":
+     binaryFormat += "0"
+     default:
+     binaryFormat += "1"
+   }
+ }
+
+for i in word {
+    let x = String(i)
+    wordsToBinary(ch:x)
+}
+print(binaryFormat)
