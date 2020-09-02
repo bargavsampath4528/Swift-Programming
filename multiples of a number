@@ -1,0 +1,16 @@
+//multiples[num,length]
+
+let num = 19
+let length = 9
+var x = 0
+var multiplesArray = [Int]()
+
+func multiples(num:Int,length:Int)->[Int]{
+    for i in 1...length {
+        x = i*num
+        multiplesArray.append(x)
+    }
+    return multiplesArray
+}
+
+print(multiples(num:num,length:length))
