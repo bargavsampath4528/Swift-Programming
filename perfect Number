@@ -1,0 +1,23 @@
+var num = 18
+var factors = [Int]()
+var sum = 0
+
+func perfectNo(num:Int)->String {
+    for i in 1..<num {
+      if num%i == 0 {
+        factors.append(i)              
+      }
+  }
+   for i in factors {
+     sum += i
+   }
+
+  if sum == num {
+     return "The number \(num) is a perfect number"
+   }
+  else {
+     return "The number \(num) is not a perfect number"
+  }
+}
+
+print(perfectNo(num:num))
