@@ -1,0 +1,21 @@
+import Foundation
+
+var input = "sample partner autonomy swallow trend"
+var lastCharacter = [Character]()
+var dictionary = [Character:String]()
+var output = ""
+
+func sortByLast(input:String)->String {
+     let items = input.components(separatedBy: " ")
+     for i in 0...items.count-1 {
+        lastCharacter.append(items[i].last!) 
+        dictionary[lastCharacter[i]] = items[i]
+     }
+     let x = lastCharacter.sorted {$0<$1}
+     for j in x {
+         output += "\(dictionary[j]!) "
+     }
+ return output
+}
+
+print(sortByLast(input:input))
