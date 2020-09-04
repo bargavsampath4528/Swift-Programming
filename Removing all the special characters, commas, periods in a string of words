@@ -7,6 +7,7 @@ var array = [String]()
 var str1 = ""
 let specialCharacters = [" ",".",",","!","&","*","@","#","$","%"]
 var status = false
+var output = ""
 
 for i in input{
  for j in specialCharacters {
@@ -27,3 +28,11 @@ for i in input{
  }
 }
 print(array)
+var dummy = [String]()
+
+ for j in array {
+     if j != "" {
+         dummy.append(j)
+     }
+  }
+print(dummy)
