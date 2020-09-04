@@ -1,0 +1,13 @@
+var array = [5,1,9,3,4,0]
+var output = [Int]()
+
+while(array.count != 1 ) {
+ for i in 0..<array.count-1 {
+    let y = array[i+1] - array[i]
+    output.append(y)
+  }
+ array = output 
+ output = [Int]()
+}
+
+print(array)
