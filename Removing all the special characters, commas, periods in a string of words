@@ -1,6 +1,7 @@
 import Foundation
 
-var input = "I think, the% solution is fairly! obvious&."
+//var input = "think, the% solution i fairly! i obvious."
+var input = "The quick brown fox jumped over the lazy dogs back."
 var items = input.components(separatedBy: " ")
 print(items)
 var array = [String]()
@@ -36,3 +37,29 @@ var dummy = [String]()
      }
   }
 print(dummy)
+
+var dict = [Int]()
+
+for j in dummy {
+    dict.append(j.count)
+}
+print(dict)
+
+var minIndex = 0
+var minIndexArray = [minIndex]
+
+    for j in 1...dict.count-1{
+      if (dict[minIndex]<dict[j]) {
+         
+        }
+         else if(dict[minIndex] == dict[j]){
+         minIndex = j
+         minIndexArray.append(minIndex)
+         }
+         else{
+             minIndex = j
+             minIndexArray.removeAll()
+             minIndexArray.append(minIndex)
+         }
+      }
+print(minIndexArray)
