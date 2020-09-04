@@ -1,0 +1,22 @@
+var input = 7977
+var num = input
+var rem = 0
+var output = ""
+
+func reverseNo(input:Int)->Int { 
+ while(num>0) {
+    rem = num%10
+    output += String(rem)
+    num /= 10
+  }
+    if input < Int(output)! {
+      return 0
+   }
+   else {
+      return (input-Int(output)!)
+      }
+ }
+ 
+ print(reverseNo(input:input))
+
+
