@@ -1,0 +1,19 @@
+var input1 = 10
+var input2 = 20
+var arr1 = [Int]()
+var arr2 = [Int]()
+var sum = 0
+
+while(input1>0) {
+  let rem1 = input1%10
+  input1 /= 10
+  arr1.append(rem1)
+  let rem2 = input2%10
+  input2 /= 10
+  arr2.append(rem2)
+ }
+ print(arr1,arr2)
+for i in 0...arr1.count-1 {
+  sum += arr2[i]-arr1[i]     
+}
+print(sum)
