@@ -1,21 +1,60 @@
+//string
 import Foundation
 
-var input = "sample partner autonomy swallow trend"
-var lastCharacter = [Character]()
-var dictionary = [Character:String]()
+var input = "sample partner autonomy australia swallow trend"
+var lastCharacter = [String]()
+var duplicate = [String]()
+var dictionary = [String:String]()
 var output = ""
+var x = [String]()
+var status = true
 
 func sortByLast(input:String)->String {
      let items = input.components(separatedBy: " ")
      for i in 0...items.count-1 {
-        lastCharacter.append(items[i].last!) 
+        lastCharacter.append(String(items[i].last!)) 
         dictionary[lastCharacter[i]] = items[i]
      }
-     let x = lastCharacter.sorted {$0<$1}
+     
+    //  for k in 0..<lastCharacter.count-1{
+    //     for m in k+1...lastCharacter.count-1{
+    //         if lastCharacter[k] == lastCharacter[m]{
+    //             items[k] += " \(items[m])"
+    //             items.remove(at:m)
+    //             lastCharacter.remove(at:m)
+    //         }
+    //     }
+    //  }
+
+     for j in 0...lastCharacter.count-1 {
+         if !duplicate.contains(lastCharacter[j]) {
+              duplicate.append(lastCharacter[j])
+         }
+         else{
+             status = false
+         }
+     }
+     
+     if status {
+     x = lastCharacter.sorted {$0<$1}
      for j in x {
          output += "\(dictionary[j]!) "
      }
+  }
+  else {
+      for j in 0...items.count-1  {
+          output += " \(items[j])"
+      }
+  }
  return output
 }
 
 print(sortByLast(input:input))
+
+
+
+
+
+
+
+
