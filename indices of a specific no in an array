@@ -1,0 +1,12 @@
+func logic(arr:[Int],num:Int)->[Int] {
+    let x = arr
+    var y = [Int]()
+    for i in 0...x.count-1 {
+        if x[i] == num {
+            y.append(i)
+        }
+    }
+    return y
+}
+
+print(logic(arr:[1,5,5,2,7],num:8))
