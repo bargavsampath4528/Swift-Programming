@@ -1,0 +1,29 @@
+import Foundation
+
+var input = "I think, the% solution is fairly! obvious&."
+var items = input.components(separatedBy: " ")
+print(items)
+var array = [String]()
+var str1 = ""
+let specialCharacters = [" ",".",",","!","&","*","@","#","$","%"]
+var status = false
+
+for i in input{
+ for j in specialCharacters {
+     if String(i) == String(j) {
+         status = true
+         break
+     }
+     else{
+        status = false
+     }
+ }
+ if status {
+     array.append(str1)
+     str1 = ""
+ }
+ else {
+     str1 += String(i)
+ }
+}
+print(array)
