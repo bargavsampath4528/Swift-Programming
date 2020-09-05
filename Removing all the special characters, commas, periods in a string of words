@@ -1,18 +1,23 @@
 import Foundation
 
 //var input = "think, the% solution i fairly! i obvious."
-var input = "The quick brown fox jumped over the lazy dogs back."
+var input = "Chase two rabbits, catch none Two, catch! baby."
 var items = input.components(separatedBy: " ")
-print(items)
 var array = [String]()
 var str1 = ""
 let specialCharacters = [" ",".",",","!","&","*","@","#","$","%"]
 var status = false
 var output = ""
+var minIndex = 0
+var minIndexArray = [minIndex]
+var finalArray = [String]()
+var dummy = [String]()
+var dict = [Int]()
 
-for i in input{
- for j in specialCharacters {
-     if String(i) == String(j) {
+func findShortestWords(input:String) ->[String] { 
+  for i in input{
+    for j in specialCharacters {
+      if String(i) == String(j) {
          status = true
          break
      }
@@ -20,34 +25,24 @@ for i in input{
         status = false
      }
  }
- if status {
+  if status {
      array.append(str1)
      str1 = ""
- }
- else {
+  }
+  else {
      str1 += String(i)
+  }
  }
-}
-print(array)
-var dummy = [String]()
-
- for j in array {
+  
+  for j in array {
      if j != "" {
          dummy.append(j)
      }
   }
-print(dummy)
 
-var dict = [Int]()
-
-for j in dummy {
+ for j in dummy {
     dict.append(j.count)
-}
-print(dict)
-
-var minIndex = 0
-var minIndexArray = [minIndex]
-
+ }
     for j in 1...dict.count-1{
       if (dict[minIndex]<dict[j]) {
          
@@ -62,4 +57,14 @@ var minIndexArray = [minIndex]
              minIndexArray.append(minIndex)
          }
       }
-print(minIndexArray)
+
+ for i in minIndexArray{
+    finalArray.append(dummy[i].lowercased())
+ }
+ 
+ let x = finalArray.sorted {$0<$1}
+ return x
+}
+
+print("Input:\(input)")
+print("Output:\(findShortestWords(input:input))")
