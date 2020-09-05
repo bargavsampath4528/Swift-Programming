@@ -1,0 +1,36 @@
+var input = "AAACCBB"
+var dummy = [String]()
+var dict = [String:Int]()
+var pairOfSocks = 0
+
+func socksPair(input:String) ->Int {
+  for i in input {
+    if !dummy.contains(String(i)) {
+      dummy.append(String(i))
+    }
+    else{}
+ }
+
+  for i in dummy {
+    dict[i] = 0
+ }
+  let dictKeys = [String](dict.keys)
+  var dictValues = [Int](dict.values)
+  for i in 0...dictKeys.count-1 {
+    for j in input {
+        if dictKeys[i] == String(j) {
+           dictValues[i] += 1
+        }
+     }
+  }
+
+  for i in dictValues {
+    if i >= 2 {
+         pairOfSocks += i/2
+    }
+  }
+ return pairOfSocks
+}
+
+print("Input:\(input)")
+print(socksPair(input:input))
