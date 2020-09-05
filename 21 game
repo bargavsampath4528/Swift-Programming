@@ -1,0 +1,63 @@
+import Foundation
+
+let mixedArray: [Any] = ["J","K","Q"]
+var num = [Int]()
+var alpha = [String]()
+var score = 0
+var firstTime = true
+
+ for object in mixedArray {
+  if let x = object as? Int {
+    num.append(x)     
+  }
+ if let y = object as? String{
+    alpha.append(y)
+  } 
+}
+func compute(alpha:[String],num:[Int]) {
+ score = 0
+ for i in num {
+    switch(i) {
+        case 2,3,4,5,6,7,8,9:
+         score += i
+        default:
+         break
+    }
+ }
+
+ for j in alpha {
+    switch(j) {
+        case "J","K","Q":
+         score += 10
+        case "A":
+         if firstTime == true {
+           score += 11
+          }
+         else {
+             score += 1
+         } 
+        default:
+         break 
+    }
+  }
+}
+compute(alpha:alpha,num:num)
+
+if score <= 21 {
+    print("false")
+}
+else {
+    if alpha.contains("A") && firstTime  {
+        firstTime = false
+        compute(alpha:alpha,num:num)
+        if score <= 21 {
+            print("false")
+        }
+        else {
+            print("true")
+        }
+    }
+    else {
+    print("true") }
+}
+print(score)
