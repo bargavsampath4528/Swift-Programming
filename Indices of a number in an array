@@ -1,0 +1,11 @@
+var output = [Int]()
+func getIndices(_ input:[Int],_ num:Int) ->[Int] {
+    for i in 0...input.count-1 {
+        if input[i] == num {
+            output.append(i)
+        }
+    }
+    return output
+}
+
+print(getIndices([8, 8, 7, 8, 8], 8))
