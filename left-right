@@ -1,0 +1,50 @@
+let leftInput = [1,2,3,-1]
+var count = 0
+var leftOutput = [Int]()
+var j = 0
+let rightInput = [1,2,3,-1]
+var rightOutput = [Int]()
+
+func leftSide(leftInput:[Int])->[Int]{
+ for i in 0...leftInput.count-1 {
+    if i == 0 {
+        leftOutput.append(i)
+    }
+    else {
+    count = 0
+        j = i
+        while j > 0 {
+            if leftInput[i] > leftInput[j-1] {
+                count += 1
+            }
+            j -= 1
+        }
+        leftOutput.append(count)
+    }
+  }
+  return leftOutput
+}
+
+func rightSide(rightInput:[Int])->[Int]{
+ for i in 0...rightInput.count-1 {
+    if i == rightInput.count-1 {
+        rightOutput.append(0)
+    }
+    else {
+    count = 0
+        j = i
+        while j < rightInput.count-1 {
+            if rightInput[i] > rightInput[j+1] {
+                count += 1
+            }
+            j += 1
+        }
+        rightOutput.append(count)
+    }
+  }
+  return rightOutput
+}
+
+print(leftSide(leftInput:leftInput))
+print(rightSide(rightInput:rightInput))
+
