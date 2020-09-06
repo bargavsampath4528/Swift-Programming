@@ -1,0 +1,26 @@
+//boomerang
+let input = [1, 7, 1, 7, 1, 7, 1]
+var count = 0
+var count1 = 0
+var output = [Int]() 
+var boomerangCount = 0
+print("Input:\(input)")
+
+func boomerang(count1:Int) {
+  for i in count1...count1+2 {
+    output.append(input[i])
+  }
+  print(output)
+  count += 1
+  if output[0] == output[2] && output[0] != output[1] {
+    boomerangCount += 1
+ }
+  output = [Int]()
+} 
+
+while count<input.count-2{
+  boomerang(count1:count)
+}
+
+print(boomerangCount)
+
