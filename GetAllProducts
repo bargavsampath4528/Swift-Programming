@@ -1,0 +1,24 @@
+let input = [1, 2, 3, 0, 5]
+var output = [Int]()
+var dummy = input
+
+func getAllProducts(_ input:[Int])->[Int] {
+ for i in 0...input.count-1{
+    var res = 1
+    dummy.remove(at:i)
+    for j in dummy{
+        res *= j
+    }
+    output.append(res)
+    dummy = input
+  }
+  return output
+} 
+
+print(getAllProducts(input))
+
+
+
+
+
+
