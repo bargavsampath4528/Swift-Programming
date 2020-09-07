@@ -1,0 +1,31 @@
+/*climbing n stairs either by 1 or 2 stair(s) at a time
+   f(n) = f(n-1) + f(n-2)
+   fibonacci series: 01123581321...
+*/
+
+let n = 6
+var f1 = 1
+var f2 = 2
+var res = 0
+
+func stairCaseClimbing(_ n:Int)->String {
+ if n == 0 {
+   print("The number of ways to climb \(n) stairs by climbing only 1 or 2 stairs at a time is\(f1)") 
+ }
+ if n == 1 {
+     print("The number of ways to climb \(n) stairs by climbing only 1 or 2 stairs at a time is\(f1)")
+ }
+ if n == 2 {
+     print("The number of ways to climb \(n) stairs by climbing only 1 or 2 stairs at a time is\(f2)")
+ }
+ 
+ for _ in 3...n {
+     res = f1+f2
+     f1 = f2
+     f2 = res
+  }
+  return "The number of ways to climb \(n) stairs by climbing only 1 or 2 stairs at a time is \(res)"
+}
+
+print(stairCaseClimbing(n))
+ 
