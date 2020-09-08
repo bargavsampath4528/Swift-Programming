@@ -1,0 +1,30 @@
+let input = [0, 1, 1, 1, 1, 1, 1, 1]
+var dummy = [Int]()
+var notUnique = [Int]()
+var count = 1
+
+func UniqueNumbers(_ input:[Int]) ->[Int] {
+  while(count <= 2) {
+      dummy = [Int]()
+        for i in input {
+          if count == 1 {
+             if !dummy.contains(i) {
+                dummy.append(i)
+            }
+           else {
+               if !notUnique.contains(i){
+                   notUnique.append(i) }
+           }
+         } 
+        else {
+           if !notUnique.contains(i){
+              dummy.append(i)              
+            } 
+         }
+      }
+    count += 1
+  }
+   return dummy
+}  
+ 
+print(UniqueNumbers(input))
