@@ -1,0 +1,31 @@
+
+func digitdifference(_ num1:Int,_ num2:Int) ->Int {
+    var arr1 = [Int]()
+    var arr2 = [Int]()
+    var num1 = num1
+    var num2 = num2
+    var diff = 0
+    var sum = 0
+    while(num1>0) {
+        let rem = num1%10
+        arr1.append(rem)
+        num1 /= 10
+    }  
+    while(num2>0) {
+        let rem = num2%10
+        arr2.append(rem)
+        num2 /= 10
+    }  
+    for i in 0...arr1.count-1 {
+        diff = arr1[i] - arr2[i]
+        if diff < 0 {
+            diff *= -1
+        }
+        print(diff)
+        sum += diff
+    }
+    print(arr1,arr2)
+    return sum
+ }
+
+ print(digitdifference(121, 599)) 
