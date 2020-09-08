@@ -1,0 +1,33 @@
+ func medianOfArray(_ arr1:[Int],_ arr2:[Int]) ->Float {
+   var mergedArray = arr1
+    for i in arr2 {
+      mergedArray.append(i)
+    }
+    let sortedArray = sortingArrayAscending(mergedArray)
+    print(sortedArray)
+    if sortedArray.count%2 == 0 {
+        let n1 = (sortedArray.count/2)-1 
+        let n2 = (sortedArray.count/2)
+        let median:Float = Float(sortedArray[n1]+sortedArray[n2])/(Float(2))
+        return median
+    }
+    else{
+        let n = ((sortedArray.count)-((sortedArray.count-1)/2)-1)
+        return Float(sortedArray[n])
+    }
+ }
+ func sortingArrayAscending(_ arr:[Int])->[Int] {
+    var arr = arr
+    for i in 0..<arr.count-1 {
+      for j in i+1...arr.count-1{
+        if arr[i] > arr[j] {
+            let temp = arr[i]
+            arr[i] = arr[j]
+            arr[j] = temp
+          }
+        }
+    }
+    return arr
+}
+
+print(medianOfArray([1,2],[3,4]))
