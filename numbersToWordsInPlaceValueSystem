@@ -1,0 +1,227 @@
+var num = 990845219
+var i = 0
+var track = true
+var finalArray = [String]()
+var arrayString = [String]()
+let placeUnit = ["ones","tens","hundreds","thousands","ten thousands","lakhs","ten lakhs","crores","ten crores"]
+let ones = ["one","two","three","four","five","six","seven","eight","nine"]
+let tens = ["twenty","thirty","fourty","fifty","sixty","seventy","eighty","ninety"]
+let hundred = " hundred"
+let thousand = " thousand"
+let lakh = " lakh"
+let crore = " crore"
+let oneTens = ["ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"]
+var placeValues = [String: Int]()
+var humanReadableFormat = String()
+
+print("Input : \(num)")
+func evaluate(name:String) ->[String] {
+     let index = placeValues.index(forKey:name)
+     let value = placeValues[index!].value
+     switch(name) {
+         case "ones":
+         switch(value) {
+             case 1,2,3,4,5,6,7,8,9:
+             arrayString.append(ones[value-1])
+             default:
+             break
+         }
+         case "tens":
+          switch(value) {
+             case 1:
+             switch(placeValues["ones"]){
+             case 0,1,2,3,4,5,6,7,8,9:
+             arrayString.removeAll()
+             arrayString.append(oneTens[placeValues["ones"]!]) 
+             default:
+             break
+             }
+             case 2,3,4,5,6,7,8,9:
+             arrayString.append(tens[value-2])
+             default:
+             break
+         }
+         case "hundreds":
+         switch(value) {
+             case 1,2,3,4,5,6,7,8,9:
+             arrayString.append(ones[value-1] + hundred)
+             default:
+             break
+         }
+         case "thousands":
+         switch(value) {
+             case 1,2,3,4,5,6,7,8,9:
+             arrayString.append(ones[value-1] + thousand)
+             default:
+             break
+         }
+         case "ten thousands":
+         switch(value) {
+             case 1:
+             switch(placeValues["thousands"]){
+                 case 0:
+                 arrayString.append(oneTens[placeValues["thousands"]!] + thousand)
+                 case 1,2,3,4,5,6,7,8,9:
+                  arrayString.append(oneTens[placeValues["thousands"]!] + thousand)
+                  arrayString.remove(at:arrayString.count-2)
+                 default:
+                  break
+             }
+             case 2,3,4,5,6,7,8,9:
+             switch(placeValues["thousands"]){
+                 case 0:
+                 switch(value) {
+                     case 2:
+                     arrayString.append(tens[placeValues["thousands"]!] + thousand)
+                     case 3:
+                     arrayString.append(tens[placeValues["thousands"]!+1] + thousand)
+                     case 4:
+                     arrayString.append(tens[placeValues["thousands"]!+2] + thousand)
+                     case 5:
+                     arrayString.append(tens[placeValues["thousands"]!+3] + thousand)
+                     case 6:
+                     arrayString.append(tens[placeValues["thousands"]!+4] + thousand)
+                     case 7:
+                     arrayString.append(tens[placeValues["thousands"]!+5] + thousand)
+                     case 8:
+                     arrayString.append(tens[placeValues["thousands"]!+6] + thousand)
+                     case 9:
+                     arrayString.append(tens[placeValues["thousands"]!+7] + thousand)
+                     default:
+                     break
+                 }
+                 case 1,2,3,4,5,6,7,8,9:
+                  arrayString.append(tens[value-2]  + " " + ones[placeValues["thousands"]!-1] + thousand)
+                  arrayString.remove(at:arrayString.count-2)
+                 default:
+                  break
+             }
+             default:
+             break
+         }
+          case "lakhs":
+          switch(value) {
+             case 1,2,3,4,5,6,7,8,9:
+             arrayString.append(ones[value-1] + lakh)
+             default:
+             break
+         }
+         case "ten lakhs":
+         switch(value) {
+             case 1:
+             switch(placeValues["lakhs"]){
+                 case 0:
+                 arrayString.append(oneTens[placeValues["lakhs"]!] + lakh)
+                 case 1,2,3,4,5,6,7,8,9:
+                  arrayString.append(oneTens[placeValues["lakhs"]!] + lakh)
+                  arrayString.remove(at:arrayString.count-2)
+                 default:
+                  break
+             }
+             case 2,3,4,5,6,7,8,9:
+             switch(placeValues["lakhs"]){
+                 case 0:
+                 switch(value) {
+                     case 2:
+                     arrayString.append(tens[placeValues["lakhs"]!] + lakh)
+                     case 3:
+                     arrayString.append(tens[placeValues["lakhs"]!+1] + lakh)
+                     case 4:
+                     arrayString.append(tens[placeValues["lakhs"]!+2] + lakh)
+                     case 5:
+                     arrayString.append(tens[placeValues["lakhs"]!+3] + lakh)
+                     case 6:
+                     arrayString.append(tens[placeValues["lakhs"]!+4] + lakh)
+                     case 7:
+                     arrayString.append(tens[placeValues["lakhs"]!+5] + lakh)
+                     case 8:
+                     arrayString.append(tens[placeValues["lakhs"]!+6] + lakh)
+                     case 9:
+                     arrayString.append(tens[placeValues["lakhs"]!+7] + lakh)
+                     default:
+                     break
+                 }
+                 case 1,2,3,4,5,6,7,8,9:
+                  arrayString.append(tens[value-2]  + " " + ones[placeValues["lakhs"]!-1] + lakh)
+                  arrayString.remove(at:arrayString.count-2)
+                 default:
+                  break
+             }
+             default:
+             break
+         }
+         case "crores":
+          switch(value) {
+             case 1,2,3,4,5,6,7,8,9:
+             arrayString.append(ones[value-1] + crore)
+             default:
+             break
+         }
+         case "ten crores":
+         switch(value) {
+             case 1:
+             switch(placeValues["crores"]){
+                 case 0:
+                 arrayString.append(oneTens[placeValues["crores"]!] + crore)
+                 case 1,2,3,4,5,6,7,8,9:
+                  arrayString.append(oneTens[placeValues["crores"]!] + crore)
+                  arrayString.remove(at:arrayString.count-2)
+                 default:
+                  break
+             }
+             case 2,3,4,5,6,7,8,9:
+             switch(placeValues["crores"]){
+                 case 0:
+                 switch(value) {
+                     case 2:
+                     arrayString.append(tens[placeValues["crores"]!] + crore)
+                     case 3:
+                     arrayString.append(tens[placeValues["crores"]!+1] + crore)
+                     case 4:
+                     arrayString.append(tens[placeValues["crores"]!+2] + crore)
+                     case 5:
+                     arrayString.append(tens[placeValues["crores"]!+3] + crore)
+                     case 6:
+                     arrayString.append(tens[placeValues["crores"]!+4] + crore)
+                     case 7:
+                     arrayString.append(tens[placeValues["crores"]!+5] + crore)
+                     case 8:
+                     arrayString.append(tens[placeValues["crores"]!+6] + crore)
+                     case 9:
+                     arrayString.append(tens[placeValues["crores"]!+7] + crore)
+                     default:
+                     break
+                 }
+                 case 1,2,3,4,5,6,7,8,9:
+                  arrayString.append(tens[value-2]  + " " + ones[placeValues["crores"]!-1] + crore)
+                  arrayString.remove(at:arrayString.count-2)
+                 default:
+                  break
+             }
+             default:
+             break
+         }
+         default:
+         break
+     }
+  return arrayString
+}
+
+while num > 0 {
+  track = false
+  let rem = num%10
+  num = num/10
+  placeValues[placeUnit[i]] = rem
+  finalArray = evaluate(name:placeUnit[i])
+  i += 1
+}
+
+if num == 0 && track {
+    arrayString.append("Zero")
+}
+
+ for item in finalArray.reversed() {
+    humanReadableFormat += " \(item)"
+    }
+ print("Output:\(humanReadableFormat)")
+
