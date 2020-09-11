@@ -1,3 +1,18 @@
+/*
+Print the any number as human readable format
+
+Example:
+
+Input - 1, Output - One
+
+Input - 11. Output - Eleven
+
+Input - 111, Output - One hundred eleven
+
+Input - 1111, Output - One thousand one hundred eleven
+*/
+
+
 var num = 990845219
 var i = 0
 var track = true
