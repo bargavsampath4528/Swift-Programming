@@ -1,0 +1,13 @@
+func returnIndex(_ array:[String]?,_ str:String?)->Int?{
+ var index:Int?
+ guard let array = array, let str = str else {return nil}
+ guard !str.isEmpty else{return nil} 
+ let newArray = array.enumerated().filter{ ($1==str ? index = $0 : nil)
+ return $1==str     
+ }
+ print(newArray)
+ return index
+}
+if let x = returnIndex(["Red", "blue", "Blue", "Green"],"blue") {
+  print(x)
+}
